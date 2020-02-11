@@ -10,6 +10,8 @@ public class Library {
         songs = 0;
     }
     public void update(){
+        runTime = 0;
+        songs = 0;
         for (Album val : albums){
             if (val != null){
                 runTime += val.getPlayTime();
@@ -25,13 +27,10 @@ public class Library {
             if (albums[i] == null) {
                 albums[i] = a1;
                 this.update();
-                a = true;
+                return true;
             }
         }
-        if (!a){
-            b = false;
-        }
-        return b;
+        return false;
     }
 
     public void remove(int index) {
@@ -92,14 +91,43 @@ public class Library {
                 toString += a.toString() + "\n";
             }
         }
-        return toString;
+        this.update();
+        return toString + "total play time: " + runTime + " and number of songs is " + songs;
     }
 
-    public void titleSort(){
-        int min , temp;
+    public void sortByTitle(){
+        Album temp;
+        int min;
+        for (int i = 0 ; i < albums.length - 1 ; i++){
+            min = i;
+            for (int scan = i + 1; scan < albums.length ; scan++) {
+                if (albums[scan] != null && albums[i] != null){
+                    if (albums[scan].getTitle().compareTo(albums[min].getTitle()) < 0){
+                        min = scan;
+                    }
+                }
+            }
+            temp = albums[min];
+            albums[min] = albums[i];
+            albums[i] = temp;
+        }
     }
 
+    public void sortByArtist(){
+        for (int i = 1; i < albums.length; i++) {
+            Album key = albums[i];
+            int position = i;
 
+            while (position > 0 && albums[position - 1] != null && key != null && albums[position - 1].getArtist().compareTo(key.getArtist()) > 0 ){
+                albums[position] = albums[position - 1];
+                position--;
+            }
+            albums[position] = key;
+        }
+    }
 
+    public int binarySearchArtist(){
+
+    }
 
 }
