@@ -21,6 +21,7 @@ public class MusicLibraryClient {
         library.add(a1);
         library.add(a1);
         library.sortByArtist();
+        System.out.println(library.binarySearchArtist("sdfsdfsdf"));
 
         System.out.println(library.toString());
 

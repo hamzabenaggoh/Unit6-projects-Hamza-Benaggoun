@@ -126,7 +126,51 @@ public class Library {
         }
     }
 
-    public int binarySearchArtist(){
+    public int binarySearchArtist(String target){
+        int low = 0;
+        int high = albums.length - 1;
+        int middle = (low + high) / 2;
+
+        while (!albums[middle].getArtist().equals(target) && low <= high ){
+            if (target.compareTo(albums[middle].getArtist()) < 0){
+                high = middle - 1;
+            }
+            else{
+                low = middle + 1;
+            }
+            middle = (low + high) / 2;
+        }
+
+        if (albums[middle].getArtist().equals(target)){
+            return middle;
+        }
+        else{
+            return -1;
+        }
+
+    }
+
+    public int binarySearchTitle(String target){
+        int low = 0;
+        int high = albums.length - 1;
+        int middle = (low + high) / 2;
+
+        while (!albums[middle].getArtist().equals(target) && low <= high ){
+            if (target.compareTo(albums[middle].getArtist()) < 0){
+                high = middle - 1;
+            }
+            else{
+                low = middle + 1;
+            }
+            middle = (low + high) / 2;
+        }
+
+        if (albums[middle].getArtist().equals(target)){
+            return middle;
+        }
+        else{
+            return -1;
+        }
 
     }
 
