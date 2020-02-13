@@ -155,8 +155,8 @@ public class Library {
         int high = albums.length - 1;
         int middle = (low + high) / 2;
 
-        while (!albums[middle].getArtist().equals(target) && low <= high ){
-            if (target.compareTo(albums[middle].getArtist()) < 0){
+        while (!albums[middle].getTitle().equals(target) && low <= high ){
+            if (target.compareTo(albums[middle].getTitle()) < 0){
                 high = middle - 1;
             }
             else{
@@ -165,7 +165,7 @@ public class Library {
             middle = (low + high) / 2;
         }
 
-        if (albums[middle].getArtist().equals(target)){
+        if (albums[middle].getTitle().equals(target)){
             return middle;
         }
         else{

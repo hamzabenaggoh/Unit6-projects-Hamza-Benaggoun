@@ -21,8 +21,14 @@ public class MusicLibraryClient {
         library.add(a1);
         library.add(a1);
         library.sortByArtist();
-        System.out.println(library.binarySearchArtist("sdfsdfsdf"));
-
+        System.out.println(library.binarySearchArtist("Not in the array"));
+        System.out.println(library.binarySearchArtist("wer"));
+        library.sortByTitle();
+        System.out.println(library.binarySearchTitle("Third"));
+        System.out.println(library.binarySearchTitle("not in the array"));
+        System.out.println(library.findArtist("Not an artist"));
+        System.out.println(library.findArtist("veet"));
+        System.out.println(library.findTitle("First"));
         System.out.println(library.toString());
 
     }
