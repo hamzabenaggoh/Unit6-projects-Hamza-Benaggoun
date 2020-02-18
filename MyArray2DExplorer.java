@@ -24,6 +24,35 @@ public class MyArray2DExplorer {
         }
         System.out.print("]");
 
+        System.out.print("\n Test colMaxs: \n Expecting: {6 6 8 5} \n Actual: {");
+        int [] test = exp.colMaxs(array);
+        for (int num : test){
+            System.out.print(num + " ");
+        }
+        System.out.print("}");
+
+        System.out.print("\n Test allRowSums: \n Expecting: {18 9 16} \n Actual: {");
+        int [] test2 = exp.allRowSums(array);
+        for (int num : test2){
+            System.out.print(num + " ");
+        }
+        System.out.print("}");
+
+
+        System.out.print("\n Test averageCol: \n Expecting: {3.33 3 3.67} \n Actual: {");
+        double[] test3 = exp.averageCol(array);
+        for (double num : test3){
+            System.out.print(num + " ");
+        }
+        System.out.print("}");
+
+
+        System.out.print("\n Test smallEven: \n Expecting: 2 \n Actual: " + exp.smallEven(array));
+
+        System.out.print("\n Test biggestRow: \n Expecting: 0 \n Actual: " + exp.biggestRow(array));
+
+
+
     }
 
     //WRITE YOUR METHODS BELOW
@@ -55,7 +84,7 @@ public class MyArray2DExplorer {
         int[] arr = new int[nums.length];
         for(int i = 0; i < nums.length ; i++){
             for (int c = 0 ; c < nums[i].length ; c++){
-                if (nums[i][c] >= smallest){
+                if (nums[i][c] <= smallest){
                     smallest = nums[i][c];
                 }
             }
@@ -70,6 +99,79 @@ public class MyArray2DExplorer {
         return null;
     }
 
+    public int[] colMaxs(int[][] matrix){ //FIX THIS METHOD
+        int largest = 0;
+        int[] output = new int[4];
+        for (int i = 0; i < matrix.length ; i++){
+            for (int c = 0 ; c < matrix[i].length ; c++){
+                largest = matrix[i][c];
+                if (matrix[i][c] >= largest){
+                    largest = matrix[i][c];
+                }
+            }
+            output[i] = largest;
+        }
+        return output;
+    }
+
+    public int[] allRowSums(int[][] data){
+        int[] output = new int[3];
+        int rowSum = 0;
+        for (int r = 0 ; r < data.length ; r++){
+            for (int c = 0 ; c < data[r].length ; c++){
+                rowSum += data[r][c];
+            }
+            output[r] = rowSum;
+            rowSum = 0;
+        }
+        return output;
+    }
+
+    public double[] averageCol(int[][] nums){ //Fix this method
+        int sumC = 0;
+        double[] output = new double[3];
+        for (int r = 0 ; r < nums.length ; r++){
+            for (int c = 0 ; c < nums.length ; c++){
+                sumC += nums[r][c];
+            }
+            output[r] = (double) sumC;
+            sumC = 0;
+        }
+        return output;
+    }
+
+    public int smallEven(int[][] matrix) {
+        int smallEven = 8;
+        for (int r = 0; r < matrix.length; r++) {
+            for (int c = 0; c < matrix.length; c++) {
+                int x = matrix[r][c] % 2;
+                if (x <= smallEven){
+                    smallEven = matrix[r][c];
+                }
+            }
+        }
+        return smallEven;
+    }
+
+    public static int biggestRow(int[][] nums){ //Fix this method
+        int b = 0;
+        MyArray2DExplorer exp2 = new MyArray2DExplorer();
+        int[] test = exp2.allRowSums(nums);
+        int bRow = 0;
+        for (int n : test){
+            bRow = n;
+            if (n > bRow){
+                bRow = n;
+            }
+        }
+        for (int i = 0 ; i < test.length ; i++){
+            if (test[i] == bRow){
+                b = i;
+            }
+        }
+        return b;
+
+    }
 
 
 
