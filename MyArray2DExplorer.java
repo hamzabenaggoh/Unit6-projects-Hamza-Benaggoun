@@ -18,42 +18,60 @@ public class MyArray2DExplorer {
 
 
         System.out.print("Test minRow: \n Expecting: {0 2 3 4} \n Actual: {");
-        int [] row = exp.minRow(array);
+        int [] row = exp.minRowPractice(array);
         for(int i = 0; i < row.length; i++){
             System.out.print(row[i] + " ");
         }
         System.out.print("]");
 
-        System.out.print("\n Test colMaxs: \n Expecting: {6 6 8 5} \n Actual: {");
-        int [] test = exp.colMaxs(array);
-        for (int num : test){
-            System.out.print(num + " ");
+        System.out.println();
+
+        System.out.print("Test minRowAssignment: \n Expecting: 2 \n Actual: ");
+        System.out.println(exp.minRowAssignment(array, 2));
+
+        System.out.println();
+
+        System.out.print("Test colMax: \n Expecting: {6 6 8 5} \n Actual: {");
+        int [] colMaxs = exp.colMaxs(array);
+        for(int i = 0; i < colMaxs.length; i++){
+            System.out.print(colMaxs[i] + " ");
         }
         System.out.print("}");
 
-        System.out.print("\n Test allRowSums: \n Expecting: {18 9 16} \n Actual: {");
-        int [] test2 = exp.allRowSums(array);
-        for (int num : test2){
-            System.out.print(num + " ");
+        System.out.println();
+        System.out.println();
+
+        System.out.print("Test allRowSum: \n Expecting: {18 9 16} \n Actual: {");
+        int [] sum = exp.allRowSums(array);
+        for(int i = 0; i < sum.length; i++){
+            System.out.print(sum[i] + " ");
+        }
+        System.out.print("}");
+
+        System.out.println();
+        System.out.println();
+
+        System.out.print("Test averageCol: \n Expecting: {3.333333 3.0 4.333333 3.6666667} \n Actual: {");
+        double [] avg = exp.averageCol(array);
+        for(int i = 0; i < avg.length; i++){
+            System.out.print(avg[i] + " ");
         }
         System.out.print("}");
 
 
-        System.out.print("\n Test averageCol: \n Expecting: {3.33 3 3.67} \n Actual: {");
-        double[] test3 = exp.averageCol(array);
-        for (double num : test3){
-            System.out.print(num + " ");
-        }
-        System.out.print("}");
+        System.out.println();
+        System.out.println();
 
+        System.out.print("Test smallEven: \n Expecting: 0 \n Actual: ");
+        System.out.println(exp.smallEven(array));
 
-        System.out.print("\n Test smallEven: \n Expecting: 2 \n Actual: " + exp.smallEven(array));
+        System.out.println();
+        System.out.println();
 
-        System.out.print("\n Test biggestRow: \n Expecting: 0 \n Actual: " + exp.biggestRow(array));
+        System.out.print("Test biggestRow: \n Expecting: 0 \n Actual: ");
+        System.out.println(exp.biggestRow(array));
 
-
-
-    }
+        System.out.println();
 
     //WRITE YOUR METHODS BELOW
 
@@ -99,19 +117,18 @@ public class MyArray2DExplorer {
         return null;
     }
 
-    public int[] colMaxs(int[][] matrix){ //FIX THIS METHOD
-        int largest = 0;
-        int[] output = new int[4];
+    public static int[] colMax(int[][] matrix){ //FIX THIS METHOD
+        int[] colsMax = new int[matrix[0].length];
         for (int i = 0; i < matrix.length ; i++){
-            for (int c = 0 ; c < matrix[i].length ; c++){
-                largest = matrix[i][c];
-                if (matrix[i][c] >= largest){
-                    largest = matrix[i][c];
+            int max = matrix[0][i];
+            for (int j = 0; j < matrix.length ; j++) {
+                if (matrix[j][i] >= max){
+                    max = matrix[j][i];
                 }
             }
-            output[i] = largest;
+            colsMax[i] = max;
         }
-        return output;
+        return colsMax;
     }
 
     public int[] allRowSums(int[][] data){
@@ -181,3 +198,58 @@ public class MyArray2DExplorer {
 
 
 }
+/*
+        int array [][] = {  {4,1,8,5},
+                {0,2,3,4},
+                {6,6,2,2} };
+        MyArray2DExplorer exp = new MyArray2DExplorer();
+
+        System.out.println("Test evenRow: \n Row w/ odd, Expecting: false \n Actual: " + exp.evenRow(array,0));
+        System.out.println("Test evenRow: \n Row w/o odd, Expecting: true \n Actual: " + exp.evenRow(array,2));
+
+        System.out.println();
+
+        System.out.println("Test oddColSum: \n Col w/ odd Sum, Expecting: true \n Actual: " + exp.oddColSum(array,1));
+        System.out.println("Test oddColSum: \n Col w/ even, Expecting: false \n Actual: " + exp.oddColSum(array,0));
+
+        System.out.println();
+
+
+        System.out.print("Test minRow: \n Expecting: {0 2 3 4} \n Actual: {");
+        int [] row = exp.minRow(array);
+        for(int i = 0; i < row.length; i++){
+            System.out.print(row[i] + " ");
+        }
+        System.out.print("]");
+
+        System.out.print("\n Test colMaxs: \n Expecting: {6 6 8 5} \n Actual: {");
+        int [] test = exp.colMaxs(array);
+        for (int num : test){
+            System.out.print(num + " ");
+        }
+        System.out.print("}");
+
+        System.out.print("\n Test allRowSums: \n Expecting: {18 9 16} \n Actual: {");
+        int [] test2 = exp.allRowSums(array);
+        for (int num : test2){
+            System.out.print(num + " ");
+        }
+        System.out.print("}");
+
+
+        System.out.print("\n Test averageCol: \n Expecting: {3.33 3 3.67} \n Actual: {");
+        double[] test3 = exp.averageCol(array);
+        for (double num : test3){
+            System.out.print(num + " ");
+        }
+        System.out.print("}");
+
+
+        System.out.print("\n Test smallEven: \n Expecting: 2 \n Actual: " + exp.smallEven(array));
+
+        System.out.print("\n Test biggestRow: \n Expecting: 0 \n Actual: " + exp.biggestRow(array));
+
+
+
+    }
+    */
