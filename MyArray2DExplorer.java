@@ -1,3 +1,4 @@
+/*
 public class MyArray2DExplorer {
 
     public static void main(String[] args) {
@@ -198,7 +199,7 @@ public class MyArray2DExplorer {
 
 
 }
-/*
+
         int array [][] = {  {4,1,8,5},
                 {0,2,3,4},
                 {6,6,2,2} };
@@ -252,4 +253,5 @@ public class MyArray2DExplorer {
 
 
     }
-    */
+
+*/
