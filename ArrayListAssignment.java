@@ -10,7 +10,7 @@ public class ArrayListAssignment {
         System.out.println("Expected: [3, 4, 1, 4, 6] \n Actual: " + nums);
 
         System.out.println();
-        /*
+
         ArrayList<String> words = new ArrayList<>(Arrays.asList("this", "is", "a", "list", "of", "words"));
         System.out.println("Test Letter Counter:");
         System.out.println(words);
@@ -48,18 +48,48 @@ public class ArrayListAssignment {
         System.out.println("# of Quarters = " + myPurse.count(new Coin(.25, "quarter")));
         System.out.println("Smallest Coin = " + myPurse.findSmallest());
         System.out.println("Total of Purse = $" + myPurse.getTotal());
-        */
 
     }
 
     public static void removeZeros(ArrayList<Integer> list) {
-        for (int i = 0; i < list.size() ; i++) {
+        for (int i = list.size() - 1; i > 0 ; i--) {
             if (list.get(i) == 0){
                 list.remove(i);
-                if (list.get(i) != null && list.get(i) == 0){
-                    list.remove(i);
-                }
             }
         }
     }
+    public static int countLetters(ArrayList<String> list){
+        int len = 0;
+        for (String x : list){
+            len += x.length();
+        }
+        return len;
+    }
+    public static int findPosition(int keyValue , ArrayList<Integer> list){
+        int out = -1;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == keyValue){
+                out = i;
+            }
+        }
+        return out;
+    }
+    public static ArrayList<String> parseIntoArrayList(String input){
+        ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i <input.length() ; i++) {
+            list.add(input.substring(i , i + 1));
+        }
+        return list;
+    }
+    public static String findMin(ArrayList<Person> list){
+        int youngest = 32;
+        String out = "";
+        for (Person x : list){
+            if (x.getAge() <= youngest){
+                out = x.getName();
+            }
+        }
+        return out;
+    }
+
 }
